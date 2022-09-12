@@ -16,7 +16,7 @@ router.get('/:id', (req, res) => {
     if (persona) {
         res.status(200).json({ success: true, data: persona })
     } else {
-        res.status(400).json({ success: false, message: 'Utente non trovato' })
+        res.status(400).json({ success: false, message: 'ID non trovato' })
     }
 })
 
@@ -49,6 +49,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
     const index = persone.findIndex(persona => persona.id === id)
+
     if (index !== -1) {
         persone.splice(index, 1)
         res.status(200).json({ success: true, data: persone })
